@@ -1,0 +1,3 @@
+Exercici Stripes
+
+IT Academy

@@ -1,0 +1,167 @@
+@import 'resets';
+@import 'variables';
+
+// style inheritance
+.styling {
+  width: 100%;
+  height: 100%;
+  margin: 2px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $textColor;
+  overflow: hidden;
+  cursor: pointer;
+  animation-fill-mode: both;
+}
+
+// Before effect
+@mixin before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $bgColor;
+  opacity: 0.05;
+  transform-origin: center center;
+  transform: skew(30deg) scaleY(1) translate(0, 0);
+}
+
+// Hover effect
+@mixin hover {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  transform: skew(0) scaleY(1) translate(0, 0);
+}
+
+// Parent Element
+.parent {
+  height: 100vh;
+  display: flex;
+
+  // Child 1
+  .child1 {
+    background: #244F75;
+    animation-name: child1;
+    animation-duration: 0.9s;
+    @extend .styling;
+
+    &::before {
+      @include before();
+    }
+
+    &:hover::before {
+      @include hover();
+    }
+  }
+
+  // Child 2
+  .child2 {
+    background: #60BFBF;
+    animation-name: child2;
+    animation-duration: 1s;
+    @extend .styling;
+
+    &::before {
+      @include before();
+    }
+
+    &:hover::before {
+      @include hover();
+    }
+  }
+
+  // Child 3
+  .child3 {
+    background: #8C4B7E;
+    animation-name: child3;
+    animation-duration: 1.1s;
+    @extend .styling;
+
+    &::before {
+      @include before();
+    }
+
+    &:hover::before {
+      @include hover();
+    }
+  }
+
+  // Child 4
+  .child4 {
+    background: #F8BB44;
+    animation-name: child2;
+    animation-duration: 1.2s;
+    @extend .styling;
+
+    &::before {
+      @include before();
+    }
+
+    &:hover::before {
+      @include hover();
+    }
+  }
+
+  // Child 5
+  .child5 {
+    background: #F24B4B;
+    animation-name: child5;
+    animation-duration: 1.3s;
+    @extend .styling;
+
+    &::before {
+      @include before();
+    }
+
+    &:hover::before {
+      @include hover();
+    }
+  }
+}
+
+// Keyframe 1
+@keyframes child1 {
+  0% {
+      transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+      transform: $transform;
+  }
+}
+
+// Keyframe 2 & 4
+@keyframes child2 {
+  0% {
+      transform: translate3d(0, 100%, 0);
+  }
+  100% {
+      transform: $transform;
+  }
+}
+
+// Keyframe 3
+@keyframes child3 {
+  0% {
+      transform: translate3d(0, -100%, 0);
+  }
+  100% {
+      transform: $transform;
+  }
+}
+
+// Keyframe 5
+@keyframes child5 {
+  0% {
+      transform: translate3d(100%, 0, 0);
+  }
+  100% {
+      transform: $transform;
+  }
+}
